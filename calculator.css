@@ -10,7 +10,7 @@ body{
 .calculator{
     margin:auto;
     width:25.5rem;
-    height:40rem;
+    height:36rem;
     display: grid;
 
     grid:"header  header" minmax(0,1fr)

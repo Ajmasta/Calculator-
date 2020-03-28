@@ -130,8 +130,8 @@ function HandleOperations(button){
             else return upperScreen.textContent = upperScreen.textContent.slice(0,-1)}
        
             //Handling negative numbers input
-        if (lastButtonPressed=== "" && button === "-") return lowerScreen.textContent += button, lastButtonPressed = "operator";
-
+        if (lastButtonPressed=== "" && button === "-") return lowerScreen.textContent += button, lastButtonPressed = "-", console.log(lastButtonPressed);
+        if (lastButtonPressed === "-") return ""
         if(lastButtonPressed==="operator") upperScreen.textContent = upperScreen.textContent.slice(0,-1)
 
         upperScreen.textContent += lowerScreen.textContent + button;

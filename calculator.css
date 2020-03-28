@@ -1,0 +1,86 @@
+body{
+}
+.calculator{
+    margin:auto;
+    width:25rem;
+    height:36rem;
+    display: grid;
+
+    grid:"header header" minmax(0,1fr)
+        "numbers  operators " minmax(0,16rem)
+        "equal equal" minmax(0,2rem) 
+        / minmax(0, 1fr) 8rem  ;
+    margin-top:5rem;
+
+    border: 10px solid black
+ 
+    }
+.screen{
+    grid-area:header;
+    display:grid;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+    "upperScreen"
+    "lowerScreen";
+    justify-self:end;
+    align-self: end;
+    background-color: pink;
+    width:100%;
+    height:100%;
+    /*border: 1px black solid;*/
+    word-break: break-all;
+    overflow-y:hidden;
+    
+    border-bottom: 10px black solid;
+    box-sizing: border-box;
+}
+.upperScreen{
+    grid-area:upperScreen;
+    color:grey;
+    height:100%;
+    justify-self:center;
+    align-self: start;
+    font-size:2rem;
+}
+.lowerScreen{
+    grid-area:lowerScreen;
+    justify-self:end;
+    align-self: end;
+   height:100%;
+    overflow:hidden;
+    font-size:3rem;
+    
+}
+.numberButtons{
+    grid-area:numbers;
+ 
+}
+.operatorButtons{
+ grid-area:operators;
+ justify-self: start;
+
+
+}
+button{
+    width:8rem;
+    height:2rem;
+    background-color: pink;
+    border:none;
+    box-shadow: 2px 2px 2px red;
+    margin-top: 4px;
+}
+button:hover{
+    background-color: red;
+}
+.equal{
+    grid-area:equal;
+    padding: 0 3.9rem 0 3.9rem;
+    align-self: end;
+    justify-self: center;
+    margin-bottom: 0px;
+}
+
+.calculatorButtons{
+   display:flex;
+   flex-direction: column;
+}

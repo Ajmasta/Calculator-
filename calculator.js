@@ -144,7 +144,7 @@ function HandleOperations(button){
         if(button!==undefined)  lowerScreen.innerHTML += button
         
         if (!upperScreen.textContent.match(regex) &&!lowerScreen.textContent.match(regex)) upperScreen.textContent = ""
-       
+        if(upperScreen.textContent[0]=== "-" && lowerScreen.textContent[0]!== "-" ) upperScreen.textContent = ""
         else if (upperScreen.textContent.includes("e") && !upperScreen.textContent[upperScreen.textContent.length-1].match(regex)) upperScreen.textContent = ""
 
         lastButtonPressed = "number";

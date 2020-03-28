@@ -1,4 +1,8 @@
 body{
+    background-image: url(background.jpg);
+    
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .calculator{
     margin:auto;
@@ -7,13 +11,13 @@ body{
     display: grid;
 
     grid:"header header" minmax(0,1fr)
-        "numbers  operators " minmax(0,16rem)
-        "equal equal" minmax(0,2rem) 
+        "numbers  operators " minmax(0,18.5rem)
+       
         / minmax(0, 1fr) 8rem  ;
     margin-top:5rem;
 
-    border: 10px solid black
- 
+    
+    box-shadow: 12px 12px 12px black;
     }
 .screen{
     grid-area:header;
@@ -27,20 +31,24 @@ body{
     background-color: pink;
     width:100%;
     height:100%;
-    /*border: 1px black solid;*/
+    
     word-break: break-all;
     overflow-y:hidden;
     
-    border-bottom: 10px black solid;
+    
     box-sizing: border-box;
+
+background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(253,29,29,1), rgba(252,176,69,1) 100%);
 }
 .upperScreen{
     grid-area:upperScreen;
-    color:grey;
+    
     height:100%;
-    justify-self:center;
+    justify-self:start;
     align-self: start;
     font-size:2rem;
+    color:#910de9;
 }
 .lowerScreen{
     grid-area:lowerScreen;
@@ -48,38 +56,64 @@ body{
     align-self: end;
    height:100%;
     overflow:hidden;
-    font-size:3rem;
+    font-size:2.5rem;
+    color:#450173
     
 }
 .numberButtons{
     grid-area:numbers;
- 
+    margin-top:1rem;
+    
+}
+.numberButtons > button{
+    background-color: rgba(253,29,29,1);
+}
+.numberButtons > button:hover{
+    background-color: pink
+}
+.numberButtons> button:nth-child(2n)
+{
+    background-color: rgb(255, 142, 49);  
+}
+.numberButtons> button:nth-child(2n):hover{
+    color:white
 }
 .operatorButtons{
  grid-area:operators;
  justify-self: start;
-
+ margin-top:1rem;
+}
+.operatorButtons >button {
+    background-color: rgba(252,176,69,1);
 
 }
 button{
-    width:8rem;
+    width:7.8rem;
     height:2rem;
-    background-color: pink;
     border:none;
     box-shadow: 2px 2px 2px red;
     margin-top: 4px;
+    border-radius: 3%;
+    
 }
 button:hover{
-    background-color: red;
-}
-.equal{
-    grid-area:equal;
-    padding: 0 3.9rem 0 3.9rem;
-    align-self: end;
-    justify-self: center;
-    margin-bottom: 0px;
+    background-color: rgba(253,29,29,1); ;
 }
 
+.equal {
+    grid-area:equal;
+    padding: 0 12.4rem 0 12.4rem;
+    margin-top: 5px;
+    align-self:start;
+    justify-self: start;
+    background: linear-gradient(90deg, rgba(253,29,29,1), rgba(252,176,69,1) 100%);
+    
+}
+.equal:hover{
+    background:none;
+    background: linear-gradient(90deg,rgba(252,176,69,1), rgba(253,29,29,1) 100% ) !important;
+    color:black !important;
+}
 .calculatorButtons{
    display:flex;
    flex-direction: column;

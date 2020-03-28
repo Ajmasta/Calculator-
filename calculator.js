@@ -24,12 +24,13 @@ handleSecretArray(e.key)
 function handleSecretArray (element){
     secretArray.push(element)
     if (secretArray.length >8) secretArray = secretArray.slice(-8)
-    console.log(secretArray.join("").toUpperCase())
+    
     if(secretArray.join("").toUpperCase()==="CHOOCHOO") lowerScreen.textContent="I Love You!", lastButtonPressed = "secret"
   
 }
 
 function HandleOperations(button){
+    if(lastButtonPressed==="") lowerScreen.textContent=""
     if (lastButtonPressed === "secret")lowerScreen.textContent=""
     regex = /[\*\/\-\+%]/
     regex2 = /[\*\/\+%]/
@@ -41,18 +42,25 @@ function HandleOperations(button){
         if (upperScreen.textContent[upperScreen.textContent.length-1].match(regex)) upperScreen.textContent = upperScreen.textContent.slice(0,-1);
         if (upperScreen.textContent[0].match(regex2)) upperScreen.textContent = upperScreen.textContent.slice(1);
 
-        
+     
+        try{
         if (eval(upperScreen.textContent)%1 === 0)  upperScreen.textContent= eval(upperScreen.textContent);
         else   upperScreen.textContent= eval(upperScreen.textContent).toFixed(2);
-
+        }
+        catch
+        {
+            upperScreen.textContent = "Error"
+            lowerScreen.textContent=""
+            lastButtonPressed = "";
+        }
         lowerScreen.textContent = "";
-        lastButtonPressed = "equal";
+        lastButtonPressed = "";
 
     }else if(isNaN(button) && (button !== "." && button !== "(" && button !== ")")){
         
         if (button === "clear") return lowerScreen.textContent="",  upperScreen.textContent= "";
 
-        if (lastButtonPressed=== "" && button === "-") return lowerScreen.textContent += button
+        if (lastButtonPressed=== "" && button === "-") return lowerScreen.textContent += button, lastButtonPressed = "operator";
 
         if(lastButtonPressed==="operator") upperScreen.textContent = upperScreen.textContent.slice(0,-1)
         upperScreen.textContent += lowerScreen.textContent + button;
@@ -63,8 +71,9 @@ function HandleOperations(button){
     }else {
         if(button!==undefined)  lowerScreen.innerHTML += button
         
-        
-        if (!upperScreen.textContent.match(regex)) upperScreen.textContent = ""
+        // ISSUE HERE, when minus is first you can just add number to the top screen, bug when putting - first
+        if (!upperScreen.textContent.match(regex2)) upperScreen.textContent = ""
+    
 
         lastButtonPressed = "number";
     
@@ -74,16 +83,4 @@ function HandleOperations(button){
 
 
 
-
-    // when you click on an operator = set the value of firstNumber as the lower screen, erase lower screen, bring lower screen to upper screen, add operator
-
-    // add paranthesis on first and second number if operation is * or /
-
-
-
-    /* make a function as such function HandleOperations(button){
-        if button=== "="
-        else if isNaN(button) && !=="." (operators)
-        else
-        then simply call the e.key event on the document, and do add event listener (handleOperations(e.key))
-    }*/
+// BUG WHEN YOU HAVE PARANTHESIS ()+8+6 ->  you can addd 6 indefinitely if you keep pressing equal

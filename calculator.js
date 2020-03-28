@@ -142,7 +142,7 @@ function HandleOperations(button){
     }else {
         if(button!==undefined)  lowerScreen.innerHTML += button
         
-        if (!upperScreen.textContent.match(regex)) upperScreen.textContent = ""
+        if (!upperScreen.textContent.match(regex) &&!lowerScreen.textContent.match(regex)) upperScreen.textContent = ""
 
         else if (upperScreen.textContent.includes("e") && !upperScreen.textContent[upperScreen.textContent.length-1].match(regex)) upperScreen.textContent = ""
 

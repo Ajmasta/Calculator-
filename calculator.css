@@ -3,6 +3,7 @@ body{
     
     background-repeat: no-repeat;
     background-size: cover;
+    touch-action: manipulation;
 }
 
 .calculator{
@@ -75,6 +76,9 @@ button{
     box-shadow: 2px 2px 2px red;
     margin-top: 4px;
     border-radius: 3%;
+    touch-action: manipulation;
+
+    
     
 }
 .rightButtonsPressed,

@@ -90,6 +90,7 @@ function HandleOperations(button){
     console.log(button)
     if(lastButtonPressed==="") lowerScreen.textContent=""
     if (lastButtonPressed === "secret") lowerScreen.textContent=""
+    if(upperScreen.textContent ==="Error") upperScreen.textContent=""
     regex = /[\*\/\-\+%]/
     regex2 = /[\*\/\+%]/
 

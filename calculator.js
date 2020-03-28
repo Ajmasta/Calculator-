@@ -31,7 +31,7 @@ switch (e.key){
         HandleOperations("clear")
         break;
     case ('Backspace'):
-        HandleOperations("clear")
+        HandleOperations("backspace")
         break;
 
 }
@@ -87,7 +87,7 @@ function handleSecretArray (element){
 }
 
 function HandleOperations(button){
-
+    console.log(button)
     if(lastButtonPressed==="") lowerScreen.textContent=""
     if (lastButtonPressed === "secret") lowerScreen.textContent=""
     regex = /[\*\/\-\+%]/
@@ -124,8 +124,12 @@ function HandleOperations(button){
     }else if(isNaN(button) && (button !== "." && button !== "(" && button !== ")")){
         
         if (button === "clear") return lowerScreen.textContent="",  upperScreen.textContent= "";
-        
-        //Handling negative numbers input
+       
+        if (button === "backspace") {
+            if (lowerScreen.textContent) return lowerScreen.textContent = lowerScreen.textContent.slice(0,-1)
+            else return upperScreen.textContent = upperScreen.textContent.slice(0,-1)}
+       
+            //Handling negative numbers input
         if (lastButtonPressed=== "" && button === "-") return lowerScreen.textContent += button, lastButtonPressed = "operator";
 
         if(lastButtonPressed==="operator") upperScreen.textContent = upperScreen.textContent.slice(0,-1)
